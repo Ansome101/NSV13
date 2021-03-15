@@ -499,7 +499,7 @@
 	var/turf/stepturf = get_step(src,direction)
 	if(locate(/obj/structure, stepturf) || locate(/obj/machinery, stepturf))//if we can't grow into a turf, we'll start digging into it
 		for(var/obj/structure/S in stepturf)
-			if(S.density && !istype(S, /obj/structure/reagent_dispensers/fueltank)) //don't breach the station!
+			if(S.density && !istype(S, /obj/structure/reagent_dispensers/fueltank) && !istype(S, /obj/structure/alien/resin/flower_bud_enemy)) //don't breach the station or kill your own flowers!
 				S.take_damage(25)
 		for(var/obj/machinery/M in stepturf)
 			if(M.density && !istype(M, /obj/machinery/power/smes)) //please don't sabotage power!
